@@ -1,8 +1,13 @@
 import express from "express";
 import morgan from "morgan";
 import pkg from "../package.json";
+// Routes imports
+import productsRouter from "./routes/products.routes";
+import userRouter from "./routes/user.routes";
+import { createRole } from "./libs/initialSetup";
 
 const app = express();
+createRole()
 
 app.set("pkg", pkg);
 
@@ -12,8 +17,6 @@ app.use(morgan("dev"));
 //Midlewares
 app.use(express.json())
 
-// Routes imports
-import productsRouter from "./routes/products.routes";
 
 app.get("/", (req, res) => {
   res.json({
@@ -24,6 +27,7 @@ app.get("/", (req, res) => {
 });
 
 // Use routes
-app.use("/products", productsRouter);
+app.use("/api/products", productsRouter);
+app.use("/api/auth", userRouter)
 
 export default app;
