@@ -1,3 +1,3 @@
-import { verifyToken } from "./authRole"
+import * as authJwt from "./authJwt"
 
-export { verifyToken }
+module.exports = { authJwt }
