@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import pkg from "../package.json";
+import cors from 'cors'
 // Routes imports
 import productsRouter from "./routes/products.routes";
 import userRouter from "./routes/user.routes";
@@ -14,6 +15,9 @@ app.set("pkg", pkg);
 
 // Morgan instance
 app.use(morgan("dev"));
+// CORS
+
+app.use(cors())
 
 //Midlewares
 app.use(express.json())
