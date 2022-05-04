@@ -6,7 +6,10 @@ const productsController = new ProductsController();
 
 router.get("/", productsController.getProducts);
 router.get("/:id", productsController.getProductById);
-router.post("/create", authJwt.verifyToken, productsController.createProduct);
+router.post("/create", [authJwt.verifyToken,
+     authJwt.isAdmin, 
+     authJwt.isModerator], 
+     productsController.createProduct);
 router.put("/update/:id", productsController.updateProduct);
 router.delete("/delete/:id", productsController.deleteProduct);
 
