@@ -15,8 +15,8 @@ app.set("pkg", pkg);
 
 // Morgan instance
 app.use(morgan("dev"));
-// CORS
 
+// CORS
 app.use(cors())
 
 //Midlewares

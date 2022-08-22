@@ -10,7 +10,9 @@ export default class ProductsController {
       imgURL,
     });
     const result = await newProduct.save();
-    return res.status(201).json({message: 'Product create successful', result});
+    return res
+      .status(201)
+      .json({ message: "Product create successful", result });
   }
 
   async getProducts(req, res) {
