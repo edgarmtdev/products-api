@@ -10,7 +10,6 @@ class AuthController {
             email
         }).populate("roles");
 
-        console.log(user);
         const validatePassword = await User.comparePassword(
             password,
             user.password
@@ -67,7 +66,7 @@ class AuthController {
             return res.status(200).json({ token, user });
         } else {
             return res.json({
-                error: `Ya existe una cuenta con el email: ${email}`
+                error: `Account already exists with email: ${email}`
             });
         }
     }
